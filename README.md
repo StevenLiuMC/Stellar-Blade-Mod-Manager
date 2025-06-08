@@ -98,7 +98,7 @@
 
 ## 📝 开源许可
 
-本项目采用 [MIT License](LICENSE.txt) 开源。
+本项目采用 [MIT License] 开源。
 
 
 A simple and user-friendly Mod Manager for the PC version of *Stellar Blade*. It provides an intuitive Graphical User Interface (GUI) that allows players to easily install, switch, and manage their game mods without the hassle of manually copying and pasting files.
@@ -199,4 +199,4 @@ Contributions are what make the open-source community such an amazing place to l
 
 ## 📝 License
 
-Distributed under the [MIT License](LICENSE.txt).
+Distributed under the [MIT License].
