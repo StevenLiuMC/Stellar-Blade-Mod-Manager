@@ -1,3 +1,7 @@
+## 🔔 开始之前 Before You Begin
+## 如果你只是想使用这个模组管理器，而不是进行二次开发，请直接在Release中下载相应的.exe文件即可
+## If you just want to use this mod manager rather than develop it further, simply download the corresponding .exe file from the Releases section.
+
 # 剑星模组管理器
 
 这是一个为 PC 版《Stellar Blade》（剑星）设计的简单易用的 Mod (模组) 管理器。通过直观的图形用户界面（GUI），玩家可以轻松地安装、切换和管理他们的游戏 Mod，无需再手动复制和粘贴文件。
