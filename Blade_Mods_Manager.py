@@ -54,8 +54,8 @@ class ModManager:
         # 创建Mods_Folder如果不存在
         if not os.path.exists(self.mods_folder):
             os.makedirs(self.mods_folder)
-            return True, "已创建Mods_Folder文件夹"
-        return True, "文件夹结构已就绪"
+            return True, "Mods\_Folder directory has been created"
+        return True, "Folder structure is ready"
 
     def get_available_mods(self):
         """扫描并返回所有可用的mod列表"""
@@ -112,7 +112,7 @@ class ModManager:
             # 找到对应的mod文件夹
             mod_path = os.path.join(self.mods_folder, mod_name)
             if not os.path.exists(mod_path):
-                return False, f"找不到mod文件夹: {mod_name}"
+                return False, f"Mod folder not found: {mod_name}"
 
             # 复制所有文件到~Mods文件夹
             # 遍历源文件夹中的所有内容
@@ -134,10 +134,10 @@ class ModManager:
                         dest_file = os.path.join(self.active_mod_path, rel_path, file)
                     shutil.copy2(src_file, dest_file)
 
-            return True, f"成功应用mod: {mod_name}"
+            return True, f"Mod applied successfully: {mod_name}"
 
         except Exception as e:
-            return False, f"应用mod时出错: {str(e)}"
+            return False, f"An error occurred while applying the mod: {str(e)}"
 
 
 class ModManagerGUI:
@@ -213,7 +213,7 @@ class ModManagerGUI:
         path_frame = tk.Frame(main_container, bg=self.bg_color)
         path_frame.pack(fill=tk.X, pady=(0, 20))
 
-        path_label = ttk.Label(path_frame, text="游戏路径:", style='Info.TLabel')
+        path_label = ttk.Label(path_frame, text="Game path:", style='Info.TLabel')
         path_label.pack(side=tk.LEFT, padx=(0, 10))
 
         self.path_var = tk.StringVar(value=self.mod_manager.game_base_path)
@@ -226,7 +226,7 @@ class ModManagerGUI:
         path_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
 
         update_path_btn = tk.Button(path_frame,
-                                    text="更新路径",
+                                    text="Update path",
                                     command=self.update_game_path,
                                     bg=self.accent_color,
                                     fg=self.fg_color,
@@ -242,7 +242,7 @@ class ModManagerGUI:
         info_frame.pack(fill=tk.X, pady=(0, 20))
 
         self.info_label = ttk.Label(info_frame,
-                                    text="正在扫描mod文件夹...",
+                                    text="Scanning mod folder...",
                                     style='Info.TLabel',
                                     background='#3c3c3c')
         self.info_label.pack(padx=10, pady=10)
@@ -252,7 +252,7 @@ class ModManagerGUI:
         list_frame.pack(fill=tk.BOTH, expand=True)
 
         list_label = ttk.Label(list_frame,
-                               text="可用的Mods:",
+                               text="Available mods:",
                                style='Info.TLabel')
         list_label.pack(anchor=tk.W, pady=(0, 10))
 
@@ -282,7 +282,7 @@ class ModManagerGUI:
         button_frame.pack(fill=tk.X, pady=(20, 0))
 
         apply_btn = tk.Button(button_frame,
-                              text="应用选中的Mod",
+                              text="Apply Selected Mod",
                               command=self.apply_selected_mod,
                               bg=self.accent_color,
                               fg=self.fg_color,
@@ -295,7 +295,7 @@ class ModManagerGUI:
         apply_btn.pack(side=tk.LEFT, padx=(0, 10))
 
         refresh_btn = tk.Button(button_frame,
-                                text="刷新列表",
+                                text="Refresh List",
                                 command=self.refresh_mod_list,
                                 bg='#555555',
                                 fg=self.fg_color,
@@ -309,7 +309,7 @@ class ModManagerGUI:
 
         # 状态栏
         self.status_label = ttk.Label(main_container,
-                                      text="就绪",
+                                      text="Ready",
                                       style='Info.TLabel')
         self.status_label.pack(side=tk.BOTTOM, anchor=tk.W, pady=(10, 0))
 
@@ -318,7 +318,7 @@ class ModManagerGUI:
         # 创建必要的文件夹
         success, message = self.mod_manager.create_necessary_folders()
         if not success:
-            messagebox.showerror("错误", message)
+            messagebox.showerror("Error", message)
 
         # 刷新mod列表
         self.refresh_mod_list()
@@ -330,21 +330,21 @@ class ModManagerGUI:
         mods = self.mod_manager.get_available_mods()
 
         if not mods:
-            self.info_label.config(text="未找到任何mod。请将mod文件夹放入Mods_Folder中。")
-            self.status_label.config(text="mod文件夹为空")
+            self.info_label.config(text="No mods found. Please place the extracted mod folder into the Mods_Folder directory")
+            self.status_label.config(text="The mod folder is empty")
         else:
-            self.info_label.config(text=f"找到 {len(mods)} 个可用的mod")
+            self.info_label.config(text=f"Found {len(mods)} available mod(s)")
             for mod in mods:
-                display_text = f"{mod['name']} ({mod['file_count']} 个文件)"
+                display_text = f"{mod['name']} ({mod['file_count']} files)"
                 self.mod_listbox.insert(tk.END, display_text)
-            self.status_label.config(text="mod列表已更新")
+            self.status_label.config(text="Mod list has been updated")
 
     def apply_selected_mod(self):
         """应用用户选中的mod"""
         selection = self.mod_listbox.curselection()
 
         if not selection:
-            messagebox.showwarning("提示", "请先选择一个mod")
+            messagebox.showwarning("Notice", "Please select a mod first")
             return
 
         # 获取选中的mod名称（去除文件数量信息）
@@ -352,21 +352,21 @@ class ModManagerGUI:
         mod_name = selected_text.split(' (')[0]
 
         # 确认对话框
-        result = messagebox.askyesno("确认",
-                                     f"确定要应用mod: {mod_name}?\n这将替换当前激活的mod。")
+        result = messagebox.askyesno("Confirm",
+                                     f"Are you sure you want to apply the mod: {mod_name}?\nThis will replace the currently active mod")
 
         if result:
-            self.status_label.config(text=f"正在应用mod: {mod_name}...")
+            self.status_label.config(text=f"Applying mod: {mod_name}...")
             self.root.update()
 
             success, message = self.mod_manager.apply_mod(mod_name)
 
             if success:
-                messagebox.showinfo("成功", message)
-                self.status_label.config(text=f"当前激活: {mod_name}")
+                messagebox.showinfo("Success", message)
+                self.status_label.config(text=f"Currently active: {mod_name}")
             else:
-                messagebox.showerror("错误", message)
-                self.status_label.config(text="应用失败")
+                messagebox.showerror("Error", message)
+                self.status_label.config(text="Application failed.")
 
     def on_mod_double_click(self, event):
         """处理双击mod列表项事件"""
@@ -381,7 +381,7 @@ class ModManagerGUI:
 
         # 重新初始化
         self.initialize()
-        messagebox.showinfo("成功", "游戏路径已更新")
+        messagebox.showinfo("Success", "Game path has been updated.")
 
 
 def main():
