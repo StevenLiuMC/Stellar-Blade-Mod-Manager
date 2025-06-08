@@ -1,6 +1,8 @@
 ## 🔔 开始之前 Before You Begin
-## 如果你只是想使用这个模组管理器，而不是进行二次开发，请直接在Release中下载相应的.exe文件即可
-## If you just want to use this mod manager rather than develop it further, simply download the corresponding .exe file from the Releases section.
+如果你只是想使用这个模组管理器，而不是进行二次开发，请直接在Release中下载相应的.exe文件即可
+If you just want to use this mod manager rather than develop it further, simply download the corresponding .exe file from the Releases section.
+
+---
 
 # 剑星模组管理器
 
