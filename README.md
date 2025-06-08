@@ -1,4 +1,4 @@
-# Stellar Blade Mod Manager
+# 剑星模组管理器
 
 这是一个为 PC 版《Stellar Blade》（剑星）设计的简单易用的 Mod (模组) 管理器。通过直观的图形用户界面（GUI），玩家可以轻松地安装、切换和管理他们的游戏 Mod，无需再手动复制和粘贴文件。
 
@@ -100,6 +100,9 @@
 
 本项目采用 [MIT License] 开源。
 
+---
+
+# Stellar Blade Mod Manager
 
 A simple and user-friendly Mod Manager for the PC version of *Stellar Blade*. It provides an intuitive Graphical User Interface (GUI) that allows players to easily install, switch, and manage their game mods without the hassle of manually copying and pasting files.
 
